@@ -156,6 +156,8 @@ public protocol ZHDropDownMenuDelegate: NSObjectProtocol {
     }
     
     private func setup() {
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ZHDropDownMenu.showOrHide)))
+        
         contentTextField = UITextField(frame: CGRect.zero)
         contentTextField.delegate = self
         contentTextField.isEnabled = false
@@ -207,7 +209,7 @@ public protocol ZHDropDownMenuDelegate: NSObjectProtocol {
         super.layoutSubviews()
         
         contentTextField.frame = CGRect(x: 15, y: 5, width: frame.size.width - 50, height: frame.size.height - 10)
-        pullDownButton.frame = CGRect(x: frame.size.width - 35, y: 5, width: 30, height: 30)
+        pullDownButton.frame = CGRect(x: frame.size.width - 35, y: bounds.size.height/2 - 15, width: 30, height: 30)
     }
 }
 
